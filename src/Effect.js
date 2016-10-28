@@ -246,11 +246,6 @@ var Effect = Class( Entity,
       this._handleX = this._currentWidth * 0.5;
       this._handleY = this._currentHeight * 0.5;
     }
-    else
-    {
-      this._handleX = 0;
-      this._handleY = 0;
-    }
 
     if ( this.HasParticles() || this._doesNotTimeout )
     {
