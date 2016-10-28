@@ -269,19 +269,14 @@ var Emitter = Class( Entity,
     this.ReadAttribute( xml, this._cEmissionAngle, "EMISSION_ANGLE" );
     this.ReadAttribute( xml, this._cEmissionRange, "EMISSION_RANGE" );
 
-    // This seems suspect? only one child?
-    var childNode = xml.getElementsByTagName( "EFFECT" )[ 0 ];
-
-    if ( childNode )
+    var _this = this;
+    ForEachXMLChild( xml, "EFFECT", function( n )
     {
       var e = new Effect();
-      e.LoadFromXML( childNode );
-      //e.CompileAll();
-
-      e.SetParentEmitter( this );
-
-      this.AddEffect( e );
-    }
+      e.LoadFromXML( n );
+      e.SetParentEmitter( _this );
+      _this.AddEffect( e );
+    } );
 
   },
 
